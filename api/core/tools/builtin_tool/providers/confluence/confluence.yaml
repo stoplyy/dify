@@ -11,29 +11,10 @@ description:
   pt_BR: 协助访问confluence
 icon: icon.jpeg
 credentials_for_provider:
-  password: # 凭据字段名称
-    type: secret-input # 凭据字段类型
-    required: true # 是否必填
-    label: # 凭据字段标签
-      en_US: password # 英文标签
-      zh_Hans: password # 中文标签
-      ja_JP: password # 日文标签
-      pt_BR: password # 葡萄牙文标签
-    placeholder: # 凭据字段占位符
-      en_US: Please input your password # 英文占位符
-      zh_Hans: 请输入你的密码 # 中文占位符
-      ja_JP: パスワードを入力してください # 日文占位符
-      pt_BR: Por favor, insira sua senha # 葡萄牙文占位符
-    help: # 凭据字段帮助文本
-      en_US: Get your password from confluence # 英文帮助文本
-      zh_Hans: 从 confluence 获取你的密码 # 中文帮助文本
-      ja_JP: confluenceからパスワードを取得する # 日文帮助文本
-      pt_BR: Obtenha sua senha do confluence # 葡萄牙文帮助文本
-    url: https://confluence.atlassian.com/cloud/api-tokens-938839802.html # 凭据字段帮助链接
 parameters: # 参数列表
   - name: userName # 参数名称 
     type: string # 参数类型
-    required: true # 是否必填
+    required: false # 是否必填
     label: # 参数标签
       en_US: userName # 英文标签
       zh_Hans: userName # 中文标签
@@ -49,6 +30,25 @@ parameters: # 参数列表
       zh_Hans: 从 confluence 获取你的用户名 # 中文帮助文本
       ja_JP: confluenceからユーザー名を取得する # 日文帮助文本
       pt_BR: Obtenha seu nome de usuário do confluence # 葡萄牙文帮助文本
+    url: https://confluence.atlassian.com/cloud/api-tokens-938839802.html # 凭据字段帮助链接
+  - name: password # 参数名称
+    type: secret-input # 参数类型
+    required: false # 是否必填
+    label: # 参数标签
+      en_US: password # 英文标签
+      zh_Hans: password # 中文标签
+      ja_JP: password # 日文标签
+      pt_BR: password # 葡萄牙文标签
+    placeholder: # 凭据字段占位符
+      en_US: Please input your password # 英文占位符
+      zh_Hans: 请输入你的密码 # 中文占位符
+      ja_JP: パスワードを入力してください # 日文占位符
+      pt_BR: Por favor, insira sua senha # 葡萄牙文占位符
+    help: # 凭据字段帮助文本
+      en_US: Get your password from confluence # 英文帮助文本
+      zh_Hans: 从 confluence 获取你的密码 # 中文帮助文本
+      ja_JP: confluenceからパスワードを取得する # 日文帮助文本
+      pt_BR: Obtenha sua senha do confluence # 葡萄牙文帮助文本
     url: https://confluence.atlassian.com/cloud/api-tokens-938839802.html # 凭据字段帮助链接
   - name: baseUrl # 参数名称
     type: string # 参数类型
@@ -67,7 +67,7 @@ parameters: # 参数列表
     form: form # 表单类型，llm表示这个参数需要由Agent自行推理出来，前端将不会展示这个参数
   - name: pageId # 参数名称
     type: number # 参数类型
-    required: true # 是否必填
+    required: false # 是否必填
     label: # 参数标签
       en_US: pageId # 英文标签
       zh_Hans: pageId # 中文标签

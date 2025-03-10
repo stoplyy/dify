@@ -1,5 +1,5 @@
 from core.tools.builtin_tool.providers.confluence.common.html2md import ConfluenceHTMLParser
-from core.tools.builtin_tool.providers.confluence.confluenceOper import get_page_content
+from core.tools.builtin_tool.providers.confluence.common.confluenceOper import get_page_content
 from core.tools.builtin_tool.tool import BuiltinTool
 from core.tools.entities.tool_entities import ToolInvokeMessage
 
@@ -35,5 +35,5 @@ class Convert2mdTool(BuiltinTool):
         #markdown_output内容保存为markdown 文件
         result.append(self.create_blob_message(blob=markdown_output.encode('utf-8'),
                                                    meta={ 'mime_type': 'text/markdown' },
-                                                    save_as=wiki_title))
+                                                    save_as=f"{wiki_title}.md"))
         return result
