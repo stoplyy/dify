@@ -31,14 +31,14 @@ credentials_for_provider:
       pt_BR: Obtenha sua senha do confluence # 葡萄牙文帮助文本
     url: https://confluence.atlassian.com/cloud/api-tokens-938839802.html # 凭据字段帮助链接
 parameters: # 参数列表
-  - name: username # 参数名称 
+  - name: userName # 参数名称 
     type: string # 参数类型
     required: true # 是否必填
     label: # 参数标签
-      en_US: username # 英文标签
-      zh_Hans: username # 中文标签
-      ja_JP: username # 日文标签
-      pt_BR: username # 葡萄牙文标签
+      en_US: userName # 英文标签
+      zh_Hans: userName # 中文标签
+      ja_JP: userName # 日文标签
+      pt_BR: userName # 葡萄牙文标签
     placeholder: # 凭据字段占位符
       en_US: Please input your username # 英文占位符
       zh_Hans: 请输入你的用户名 # 中文占位符

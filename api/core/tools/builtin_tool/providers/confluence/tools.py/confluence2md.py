@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from core.tools.builtin_tool.providers.confluence.common.html2md import ConfluenceHTMLParser
 from core.tools.builtin_tool.providers.confluence.confluenceOper import get_page_content
 from core.tools.builtin_tool.tool import BuiltinTool
@@ -16,17 +14,26 @@ class Convert2mdTool(BuiltinTool):
             invoke tools
         """
 
-        baseUrl = tool_Parameters['baseUrl']
-        pageId = tool_Parameters['pageId']
-        username = tool_Parameters['username']
+        base_url = tool_Parameters['baseUrl']
+        page_id = tool_Parameters['pageId']
+        username = tool_Parameters['userName']
         password = self.runtime.credentials['password']
 
-        wiki_content = get_page_content(baseUrl, username, password, pageId)
+        if not base_url or not page_id or not username or not password:
+            print(f'error: {tool_Parameters}')
+            return self.create_text_message('缺少参数 请检查参数是否正确')
+
+        wiki = get_page_content(base_url, username, password, page_id)
+        wiki_content = wiki['results']
+        wiki_title = wiki['title']
+        print(f'success get wiki content: {wiki_title} length: {len(wiki_content)}')
         parser = ConfluenceHTMLParser()
         parser.feed(wiki_content)
         markdown_output = parser.get_markdown()
-
+        print(f'success convert wiki content to markdown: {wiki_title}')
         result = []
-        result.append(self.create_file_message(file_name=wiki_content['title'], file_content=markdown_output))
-
+        #markdown_output内容保存为markdown 文件
+        result.append(self.create_blob_message(blob=markdown_output.encode('utf-8'),
+                                                   meta={ 'mime_type': 'text/markdown' },
+                                                    save_as=wiki_title))
         return result
